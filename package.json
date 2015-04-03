@@ -1,6 +1,6 @@
 {
   "name": "steadfast",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Reliable handling of perpetually pending promises",
   "main": "index.js",
   "scripts": {
