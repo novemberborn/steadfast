@@ -17,26 +17,27 @@ npm install steadfast
 Allows you to observe whether the `promise` settles within the required time
 `delay`, specified in milliseconds.
 
-Returns an object with a new promise that is settled the same way as `promise`,
-but remains pending if the timeout is reached first.
+Returns an object with a new promise `.promise` that is settled the same way as
+`promise`, but remains pending if the timeout is reached first.
 
-The returned object also has an `expired()` method. It takes a `handler`
+The returned object also has a `.expired()` method. It takes a `handler`
 function and returns a promise. The handler is called if the timeout is reached
 before the original `promise` settled. It's passed `resolve` and `reject`
 functions that can be used to settle the promise returned when calling
-`expired()`. The returned promise is rejected if the handler throws an error.
+`.expired()`. The returned promise is rejected if the handler throws an error.
 
-The returned object also has an `finally()` method. It takes a `handler`
+The returned object also has a `.finally()` method. It takes a `handler`
 function and has no return value. The handler is called when the timeout is
 reached or the original `promise` settles (whichever occurs first).
 
 `setTimeout` is used internally. Consequently the timeout may be triggered a
 little sooner or a little later than specified.
 
-The timer is available on the returned object as `timer`. In io.js you could
-call [`unref()`](https://iojs.org/api/timers.html#timers_unref) on the timer so
-it won't unnecessarily keep the program running. Please read the io.js
-documentation carefully, caveats emptor.
+The handle returned by `setTimeout` is available on the returned object as
+`.timer`. In io.js you could call
+[`unref()`](https://iojs.org/api/timers.html#timers_unref) on the timer so it
+won't unnecessarily keep the program running. Please read the io.js
+documentation carefully, caveat emptor.
 
 Returned promises are created through `new promise.constructor()`, meaning
 Steadfast can be used with non-native Promise implementations.
