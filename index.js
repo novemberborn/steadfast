@@ -45,7 +45,7 @@ exports.after = function(promise, delay) {
 
   const registerFinallyHandler = function(handler) {
     const invoke = function() {
-      return handler();
+      handler();
     };
 
     finalized.then(invoke, invoke);
